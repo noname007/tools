@@ -1,11 +1,6 @@
 <?php
 	$sh = mysql_connect('127.0.0.1','root','123a123a') or die('fail db');
 	$dbname = 'cq_server';
-	// $tables = mysql_list_tables($dbname);
-	// while($rows = mysql_fetch_row($tables))
-	// {
-	// 	// var_dump($rows);
-	// }
 	mysql_select_db($dbname);
 	$tablename = 'activity_setting';
 	$q = 'show columns from '.$tablename;
@@ -24,22 +19,57 @@
 
 	}
 	
-	function generate_attr($attr_arr,$tablename)
+	function generate_attr($attr_arr,$classname)
 	{
-		$linefeed = PHP_EOL;
-		$prefix = '    ';
-		$tab ='    ';
-		$str='<?php'.PHP_EOL;
-		$str .= 'class '.$tablename.' extends Table{'.PHP_EOL;
+
+		$temp = '';
 		foreach ($attr_arr['c'] as $key => $value) 
 		{
-			$str .= $prefix.'public'.$tab.'$'.$value.';'.$linefeed;
+			$temp .= 
+<<<EOF
+	public	\$$value;
+
+EOF;
 		}
-		$str .= $prefix.'function __construct(){'.PHP_EOL;
-		$str .= $prefix.$prefix.'parent::__construct(\''.$tablename.'\',array(\''.join($attr_arr['pk'],'\',\'').'\'),array(\''.join($attr_arr['columns'],'\',\'').'\'));'.$linefeed;
-		return $str.$prefix.'}'.PHP_EOL.'}'.PHP_EOL;
+		
+		$str = 
+<<<EOF
+<?php
+class $tablename extends Tableyz
+{
+
+EOF;
+		$str.=$temp;
+		$pk = join($attr_arr['pk'],'\',\'');
+		$columns =  join($attr_arr['columns'],'\',\'');
+		$str .=
+<<<EOF
+
+	function __construct(){
+		parent::__construct($tablename,array('$pk')),array('$columns'));
 	}
-	// echo "\n";
-	// echo join($field_name['pk'],'\',\'');
-	$h = fopen($tablename.'.php', 'w');
-	fwrite($h, generate_attr($field_name,$tablename));
+
+EOF;
+
+$str .=
+<<<EOF
+
+	public static function get_by_sql(\$columns,\$conditions,\$other_sql_option)
+	{
+		return parent::get_by_sql(\$this->tablename,\$columns,\$conditions,\$other_sql_option);
+	}
+
+	public static function wrapper(\$res)
+	{
+		return parent::wrapper(\$res,__CLASS__);
+	}
+}
+
+EOF;
+		return $str;
+	}
+
+	$classname = ucfirst($tablename);
+	echo $res = generate_attr($field_name,$tablename);
+	$hd = fopen( $classname.'.php','w+');
+	fwrite( $hd,$res);
