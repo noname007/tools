@@ -30,14 +30,14 @@ function write($modact)
 	foreach ($modact as  $modname=>$acts) 
 	{
 		$content           = 'class '.$modname.$linefeed.$linefeed;      
-		$lambdaContent     = 'class '.$modname.$linefeed.$linefeed;
+		$lambdaContent     = 'class '.$modname."LambdaConfig".$linefeed.$linefeed;
 
 		foreach ($acts as $actname => $act)
 		{
 			$content       .= $space.'def '.$act.$linefeed;                
 			$content       .= 
 <<<EOF
-		@heibangUrlQueryParam.parameter = {'mod'=>'$modname','act'=>'$act'}
+		{'mod'=>'$modname','act'=>'$act'}
 EOF;
 			$content       .= $linefeed;
 			$content       .= $space.'end'.$linefeed.$linefeed;
@@ -58,7 +58,7 @@ EOF;
 		$content           .= 'end'.$linefeed;                           
 		$lambdaContent     .= 'end'.$linefeed;                           
 		Log::write($content,$modname,'./param/');
-		Log::write($lambdaContent,$modname,'./lambda/');
+		Log::write($lambdaContent,$modname."LambdaConfig",'./lambda/');
 	}
 }
 write($modact);
