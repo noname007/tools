@@ -12,15 +12,18 @@ require 'modules/includes.php';
 // print_r(get_class_methods('ModActivityCollection'));
 
 $a = get_declared_classes();
+$methodnum = 0;
 foreach($a as $v)
 {
 	$t = new ReflectionClass($v);
 	if($t->isUserDefined()&&($classname = $t->getName()) != 'Log')
 	{
-		$modact[$classname] =get_class_methods($classname);	
+		$modact[$classname] =get_class_methods($classname);
+		$methodnum += count($modact[$classname]);
+		echo $classname," ",count($modact[$classname]),"\n";
 	}
-
 }
+echo $methodnum,"\n";
 
 function write($modact)
 {
