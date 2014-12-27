@@ -54,4 +54,23 @@
 	// echo strtotime("2016-06-07 00:00:00");
 	// require_once 'test1/test1.php';
 
-	array_rand_value(array(1,2,3,4,5,6));
+	// array_rand_value(array(1,2,3,4,5,6));
+
+	var_dump(microtime(1));//0.94505900 1419596928
+	// 0.94505900 1419596928
+
+// <?php
+    echo $stime=microtime(true); //获取程序开始执行的时间
+
+    echo "本PHP程序的运行时间为";
+
+    echo $etime=microtime(true);//获取程序执行结束的时间
+    $total=$etime-$stime;   //计算差值
+    echo $total;
+    $str_total = var_export($total, TRUE);
+    var_dump($str_total);
+    // if(substr_count($str_total,"E")){
+        $float_total = floatval(substr($str_total,5));
+        // $total = $float_total/100000;
+    	echo "$total".'秒';
+    // }

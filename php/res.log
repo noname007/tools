@@ -1,0 +1,107 @@
+array (
+  0 => 
+  array (
+    'time' => 0,
+    'count' => 1,
+    'name' => ' ',
+    'ave' => 0,
+  ),
+  1 => 
+  array (
+    'time' => 0.42652034759521457,
+    'count' => 477,
+    'name' => 'Server get_list',
+    'ave' => 0.0008941726364679551,
+  ),
+  2 => 
+  array (
+    'time' => 419.60019969940191,
+    'count' => 7616,
+    'name' => 'Player update_user_info',
+    'ave' => 0.055094564036160969,
+  ),
+  3 => 
+  array (
+    'time' => 172.12748956680301,
+    'count' => 2375,
+    'name' => 'Equip dazaoForgeEquip',
+    'ave' => 0.072474732449180207,
+  ),
+  4 => 
+  array (
+    'time' => 458.91959643363958,
+    'count' => 6053,
+    'name' => 'Equip equip_ronglian',
+    'ave' => 0.07581688360046912,
+  ),
+  5 => 
+  array (
+    'time' => 454.33569002151484,
+    'count' => 5975,
+    'name' => 'Equip strengthen',
+    'ave' => 0.07603944602870541,
+  ),
+  6 => 
+  array (
+    'time' => 457.42807412147528,
+    'count' => 6005,
+    'name' => 'Equip setEquip',
+    'ave' => 0.076174533575599543,
+  ),
+  7 => 
+  array (
+    'time' => 463.94597721099859,
+    'count' => 6087,
+    'name' => 'Equip getRongLianInfo',
+    'ave' => 0.076219151833579524,
+  ),
+  8 => 
+  array (
+    'time' => 396.75552630424505,
+    'count' => 4854,
+    'name' => 'Equip resetForgenew',
+    'ave' => 0.081737850495312125,
+  ),
+  9 => 
+  array (
+    'time' => 573.19261360168457,
+    'count' => 5948,
+    'name' => 'Equip shenqi_inherit',
+    'ave' => 0.096367285407142664,
+  ),
+  10 => 
+  array (
+    'time' => 196.40381121635431,
+    'count' => 940,
+    'name' => 'Player login',
+    'ave' => 0.20894022469824927,
+  ),
+  11 => 
+  array (
+    'time' => 2130.0103509426112,
+    'count' => 5937,
+    'name' => 'Battle challenge_boss',
+    'ave' => 0.35876879753117924,
+  ),
+  12 => 
+  array (
+    'time' => 684.8410425186139,
+    'count' => 472,
+    'name' => 'Player reg',
+    'ave' => 1.4509344121157075,
+  ),
+  13 => 
+  array (
+    'time' => 14519.908601522446,
+    'count' => 7688,
+    'name' => 'Battle start_battle',
+    'ave' => 1.888645759823419,
+  ),
+  14 => 
+  array (
+    'time' => 9780.7447504997253,
+    'count' => 4102,
+    'name' => 'Battle pve_quick',
+    'ave' => 2.3843843857873539,
+  ),
+)

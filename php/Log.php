@@ -10,6 +10,7 @@ class Log
 	private static $obj;
     private $logsFile;
     private $logPath='';
+    public $extra='';
 
 	function __construct()
 	{
@@ -25,7 +26,7 @@ class Log
 		return self::$obj;
 	}
 
-	function  write2($data,$file='applicatiion',$path='./')
+	function  write2($data,$file='applicatiion',$path='')
 	{  
         $this->logPath = $path;
         if(!isset($this->logsFile[$this->logPath.$file]))
