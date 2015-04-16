@@ -32,12 +32,12 @@ function write($modact)
 
 	foreach ($modact as  $modname=>$acts) 
 	{
+		$modname = substr($modname,3);
 		$content           = 'class '.$modname.$linefeed.$linefeed;      
 		$lambdaContent     = 'class '.$modname."LambdaConfig".$linefeed.$linefeed;
-
 		foreach ($acts as $actname => $act)
 		{
-			$content       .= $space.'def '.$act.$linefeed;                
+			$content       .= $space.'def self.'.$act.'(robot)'.$linefeed;                
 			$content       .= 
 <<<EOF
 		{'mod'=>'$modname','act'=>'$act'}
@@ -45,12 +45,14 @@ EOF;
 			$content       .= $linefeed;
 			$content       .= $space.'end'.$linefeed.$linefeed;
 			
-			$lambdaContent .= $space.'def '.$act.'(robot)'.$linefeed;
+			$lambdaContent .= $space.'def self.'.$act.'(robot)'.$linefeed;
 			$lambdaContent .=
 <<<EOF
 		lambda{
 			|response_data|
-			#puts response_data		
+			puts '$modname $act done...'
+			#puts response_data	
+			robot.MA('$modname','')	
 		}
 EOF;
 			$lambdaContent .= $linefeed;
