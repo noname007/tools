@@ -74,3 +74,6 @@
         // $total = $float_total/100000;
     	echo "$total".'秒';
     // }
+    $a = true;
+    $b = '';
+    var_dump(isset($a,$b));

@@ -30,21 +30,19 @@
                     echo $line,"\n";
                 }
                 if($line == '('){
-                    $temp = array();
                     $read = 1;
                     continue;
-                }else if ($read != 1){
-                    continue;
-                }
-
-                if($line == ')'){
+                }else if($line == ')'){
                     $read = 0;
                     if(call_user_func($callback,$temp)){
                         $res[] = $temp;
                     }
+                    $temp = array();
+                    continue;
+                }else if ($read != 1){
+                    $temp['date'] = substr($line,0,19);
                     continue;
                 }
-               
                 list($key,$value) = explode('=>',$line);
                 $temp[trim(trim($key),"'")] = trim(trim($value),"'");
             }
@@ -63,7 +61,7 @@
     $data = ($obj->read_data(
             // 幸亏 有闭包。。。。，回调。。。
             function ($temp) use($app_id,$channel_id){
-                return $temp['app_id'] == $app_id &&$temp['channel_id'] == $channel_id ;
+                return isset($temp['app_id'],$temp['channel_id']) && $temp['app_id'] == $app_id &&$temp['channel_id'] == $channel_id ;
             }));
 
     print_r($data);
