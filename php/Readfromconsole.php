@@ -55,7 +55,9 @@
         }
 	}
 	$obj = new Readfromconsole;
-    $app_id = 20005;
+    $param = getopt('a:');
+    $app_id = $param['a'];
+    var_dump($param);
     $channel_id = 10;
     // fget(Readfromconsole::$cmd_fh);
     $data = ($obj->read_data(
