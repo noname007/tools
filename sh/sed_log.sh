@@ -20,3 +20,4 @@ cat application.log |sed -n '/create_order/,/API_RESPONSE/p'|sed  -n  '/API_REQU
 
 sudo sed  -i 's/20006/20004/' ../Readfromconsole.php
 
+cat application.log |sed -n '] /api\/server\/verify/,/)/p'|php Readfromconsole.php
