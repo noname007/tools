@@ -43,13 +43,14 @@
     /*
     
      */
-    $db1 = 'test';
+    $db1 = 'sevenga_tuitui';
     // $db1 = 'xianshang';
-    $db2 = 'xianshang1';
-    $test = (get_colume('192.168.1.129','demo','111111',$db1));
+    $db2 = 'yunshi';
+    $test = (get_colume('123.57.5.12','root','Sevenga1217',$db1));
+    $test1 = (get_colume('123.57.5.12','root','Sevenga1217',$db2));
     // get_table_info();
     // get_table_info('dfadee');
-    $luzheqi_sql = (get_colume('192.168.1.129','demo','111111',$db2));
+    // $luzheqi_sql = (get_colume('192.168.1.129','demo','111111',$db2));
     // var_dump($luzheqi_sql);
     echo 'diff ',$db1,'...',$db2,PHP_EOL;
     function cmp(&$db1,&$db2){
@@ -133,4 +134,4 @@
 
         return $res;
     }
-    cmp($test,$luzheqi_sql);
+    cmp($test,$test1);

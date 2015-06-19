@@ -21,3 +21,16 @@ cat application.log |sed -n '/create_order/,/API_RESPONSE/p'|sed  -n  '/API_REQU
 sudo sed  -i 's/20006/20004/' ../Readfromconsole.php
 
 cat application.log |sed -n '] /api\/server\/verify/,/)/p'|php Readfromconsole.php
+
+
+
+cat application.log |sed -n '/api/,/API_RESPONSE/p'|sed  -n  '/REQUEST]/,/)/p'|sed -n '/app_id/,/channel_id/p'|sort |uniq -c
+
+sudo cat application.log.20150526 application.log.20150527 application.log.20150528 application.log|sed -n '/check_order/,/API_RESPONSE/p'|sed  -n  '/REQUEST]/,/)/p'|php ../Readfromconsole.php
+
+
+
+sudo cat application.log.20150526 application.log.20150527 application.log.20150528 application.log|sed -n '/check_user/,/API_RESPONSE/p'|sed  -n  '/REQUEST]/,/)/p'|php ../Readfromconsole.php
+sudo cat application.log.20150526 application.log.20150527 application.log.20150528 application.log|sed -n '/set_game_info/,/API_RESPONSE/p'|sed  -n  '/API_REQUEST_DATA]/,/)/p'|php ../Readfromconsole.php
+sudo cat application.log.20150526 application.log.20150527 application.log.20150528 application.log|sed -n '/create_order/,/API_RESPONSE/p'|sed  -n  '/API_REQUEST_DATA]/,/)/p'|php ../Readfromconsole.php
+sudo cat application.log.20150526 application.log.20150527 application.log.20150528 application.log|
