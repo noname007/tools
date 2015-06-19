@@ -24,7 +24,10 @@ class Calendar{
 
         $this->_table=""; 
         $this->_year = isset($_GET["y"])?$_GET["y"]:date("Y"); 
-        $this->_month = isset($_GET["m"])?$_GET["m"]:date("m"); 
+        $this->_month = isset($_GET["m"])?$_GET["m"]:date("m");
+        $this->_now_year = date("Y");
+        $this->_now_month = date("m");
+        $this->_now_day = date("d");
         if ($this->_month>12){//处理出现月份大于12的情况 
             $this->_month=1; 
             $this->_year++; 
@@ -66,7 +69,12 @@ class Calendar{
         }
         for ($i=1;$i<=$this->_days;$i++){//输出天数信息
             $_i = $i.$this->_duty_type_content[ get_duty_type($this->_duty_type + ($i - 1))];
-            $this->_table.="<td>$_i</td>"; 
+            if($this->_now_year == $this->_year && $this->_now_month == $this->_month && $this->_now_day == $i){
+                $this->_table.="<td style='background:green'>$_i</td>";
+                echo $i;
+            }else{
+                $this->_table.="<td>$_i</td>"; 
+            }
             if ($nums%7==0){//换行处理：7个一行 
                 $this->_table.="</tr><tr>"; 
             }
