@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+echo "<pre>";
+print_r(${1});
+echo '</pre>';
+]]></content>
+<tabTrigger>debug</tabTrigger>
+<scope>source.php</scope>
+	<!-- Hello, ${1:this} is a ${2:snippet}. -->
+
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<!-- <tabTrigger>hello</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
