@@ -7,8 +7,10 @@
         private $patten='';
         public function __construct()
 		{
-			$beanstalkd_arr = '127.0.0.1:7999';
-			$this->tube_name='test';
+            $beanstalkd_arr = '127.0.0.1:';
+            $param = getopt('p:t:');
+            $this->tube_name = $param['t'];
+            $beanstalkd_arr .= $param['p'];
             self::$cmd_fh = fopen('php://stdin','r');
 			parent::__construct($beanstalkd_arr,$this->tube_name);
 		}
@@ -25,7 +27,7 @@
                 echo 'Delete data ',($data),' ?';
                 $this->proc_status($this->read_cmd_input(),$job,$data);
             }
-
+            $this->kick_buried_delayed_job();
 		}
 
         public function run()

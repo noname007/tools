@@ -18,7 +18,7 @@ class BaseWorker{
         }
         $pheanstalk_path = __DIR__.'/../../vendor/pheanstalk';
         require_once($pheanstalk_path . '/pheanstalk_init.php');
-        $this->log(self::curTime() . ' [starting] at ' .  $addr);
+        $this->log(' [starting] at ' .  $addr);
         $this->beandstalk_addr = $addr;
         $this->pheanstalk = new Pheanstalk_Pheanstalk($addr);
         if(empty($this->pheanstalk))
@@ -27,7 +27,6 @@ class BaseWorker{
             exit;
         }
         $this->watch($tube_name);
-        $this->pheanstalk->ignore('default');
         $this->curl = New Curl;
         $this->curl->init();
     }
@@ -46,7 +45,11 @@ class BaseWorker{
     {
         echo '[',self::curTime(),']'.$txt . "\n";
     }
-
+    /**
+     * [watch description]
+     * @param  [string/array] $tube_name [监控一个/组tube]
+     * @return [type]            [description]
+     */
     public function watch($tube_name)
     {
         if(!empty($tube_name) && is_string($tube_name))
