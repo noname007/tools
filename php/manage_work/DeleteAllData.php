@@ -1,23 +1,7 @@
 <?php
     require __DIR__.'/BaseWorker.php';
 	class DeleteData extends BaseWorker{
-        public function __construct(){
-            $param = getopt('h:p:t:');
-            $beanstalkd_arr =isset($param['h'])?$param['h'] : '127.0.0.1';
-            isset($param['p']) or die('no port');
-            isset($param['t']) or die('no tubename');
-            $this->tube_name = $param['t'];
-            $beanstalkd_arr .= $param['p'];
-            date_default_timezone_set('PRC');
-    		parent::__construct($beanstalkd_arr,'');
-		}
-
-
-        public function __destruct()
-        {
-            parent::__destruct();
-        }
-
+        
         public function run()
         {
             $tubes = $this->pheanstalk->listTubes();

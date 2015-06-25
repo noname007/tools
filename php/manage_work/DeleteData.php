@@ -7,16 +7,14 @@
         private $patten='';
         public function __construct()
 		{
-            $beanstalkd_arr = '127.0.0.1:';
-            $param = getopt('p:t:');
-            $this->tube_name = $param['t'];
-            $beanstalkd_arr .= $param['p'];
+            parent::__construct();
             self::$cmd_fh = fopen('php://stdin','r');
-			parent::__construct($beanstalkd_arr,$this->tube_name);
 		}
+
         public function __destruct()
         {
             fclose(self::$cmd_fh);
+            parent::__destruct();
         }
 
         protected function process_job(&$job)

@@ -6,16 +6,18 @@ class BaseWorker{
     const WORKER_EXIT_STATUS = -1024;
     public $queue_data;
     public $beandstalk_addr;
-    protected $curl;
+    private $_curl;
     protected $pheanstalk;
     // private $_m;/*仿照Yii componet的写*/
-    public function __construct($addr,$tube_name) 
+    public function __construct() 
     {
-        if(empty($addr))
-        {
-            $this->log('addr can\'t be empty!');
-            exit;
-        }
+        $param = getopt('h:p:t:');
+        $addr = isset($param['h'])?$param['h'] : '127.0.0.1';
+        isset($param['p']) or die('no port');
+        isset($param['t']) or die('no tubename');
+        $this->tube_name = $param['t'];
+        $addr .= $param['p'];
+        date_default_timezone_set('PRC');
         $pheanstalk_path = __DIR__.'/../../vendor/pheanstalk';
         require_once($pheanstalk_path . '/pheanstalk_init.php');
         $this->log(' [starting] at ' .  $addr);
@@ -26,14 +28,27 @@ class BaseWorker{
             $this->log('init pheanstalk failed '.$addr.'  '.$pheanstalk_path);
             exit;
         }
-        $this->watch($tube_name);
-        $this->curl = New Curl;
-        $this->curl->init();
+        $this->watch($this->tube_name);
+        $this->log('starting beanstalk '.$this->beandstalk_addr);
+    }
+
+    public function __get($name){
+        $name  = 'get'.ucfirst($name);
+        if(method_exists($this,$name)){
+            return call_user_func(array($this,$name));
+        }else{
+            throw new Exception("Function not exist");
+        }
+    }
+
+    public function getCurl(){
+        $this->_curl = New Curl;
+        $this->_curl->init();
     }
 
     public function __destruct() 
     {
-        $this->log(self::curTime() . ' [ending] at ' . $this->beandstalk_addr);
+        $this->log('ending' . $this->beandstalk_addr);
     }
     
     public static function curTime()

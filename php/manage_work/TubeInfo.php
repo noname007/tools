@@ -4,14 +4,7 @@
 	*/
 	require __DIR__.'/BaseWorker.php';
 	class TubeInfo extends BaseWorker
-	{	
-		public function __construct(){
-			$beanstalkd_arr = '127.0.0.1:';
-			$param = getopt('p:');
-			$beanstalkd_arr .= $param['p'];
-			$this->tube_name='test';
-			parent::__construct($beanstalkd_arr,$this->tube_name);
-		}
+	{
 		public function run(){
 			$_sys = $this->pheanstalk->stats();
 			echo '---------------------------beanstalk:',$this->beandstalk_addr,'----------------------------',"\n";
