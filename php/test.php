@@ -77,3 +77,5 @@
     $a = true;
     $b = '';
     var_dump(isset($a,$b));
+$a = null;
+echo round($a);

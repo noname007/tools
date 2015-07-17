@@ -1,0 +1,17 @@
+jdkfjasld12345445
+1213423443q
+1
+aaa9%^&
+)*%^&1-
+dfa1340273~rewr902
+she  is  good student and we are all proud of he's hes
+
+- reg `\bhe\b`
+
+
+[url]1.gif[\url]
+[url]2.gif[\url]
+[url]3.gif[\url]
+[url]4.gif[\url]
+
+- reg `(?<url>url).*?\k<url>`

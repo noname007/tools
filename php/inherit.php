@@ -3,7 +3,11 @@
     class A1{
         function table_name(){
             echo __CLASS__,PHP_EOL;
+            self::_table_name();
             // echo get_class($this),PHP_EOL;
+        }
+        static function _table_name(){
+            echo __CLASS__,PHP_EOL;
         }
         function process(){
             echo __CLASS__,"process",PHP_EOL;
@@ -31,6 +35,7 @@
             // echo get_class($this),"process",PHP_EOL;
             // echo get_class($this),PHP_EOL;
         }
+
         function process(){
             echo __CLASS__,"process",PHP_EOL;
             $this->table_name();
