@@ -43,3 +43,6 @@ Temporary Items
 .apdisk
 php/timestate.log
 *.log
+*.exe
+
+

@@ -1,0 +1,34 @@
+graph simple{
+	a-- b -- c;
+	b -- d;
+}
+
+digraph dsimple{
+	a->b->c;
+	b->d;
+}
+
+
+digraph node_attr
+{
+    shape1 [shape=box, label="编程随想注：\n矩形节点"];
+    shape2 [shape=circle, label="编程随想注：\n圆形节点"];
+    shape3 [shape=ellipse, label="编程随想注：\n椭圆形节点"];
+    shape4 [shape=polygon, sides=4, skew=0.4, label="编程随想注：\n平行四边形节点"];
+    shape5 [shape=none, label="编程随想注：\n无边框节点"];
+    shape1 -> shape2 -> shape3 -> shape4 -> shape5
+
+    color1 [color="blue", label="编程随想注：\n蓝色边框"]
+    color2 [color="green", style=filled, label="编程随想注：\n绿色填充"]
+    color3 [color="#ff0000", style=filled, fillcolor="yellow", label="编程随想注：\n红色边框+黄色填充"]
+    color4 [color="#0000FF" style=filled, fillcolor="green:red", label="编程随想注：\n蓝色边框+从绿色到红色渐变填充"]
+    /* 上面两个节点采用 HTML 的颜色语法，dot 支持 这种语法 */
+    color1 -> color2 -> color3 -> color4
+
+    text1 [shape=box, fontsize=12, label="编程随想注：\n小字体"]
+    text2 [shape=box, fontsize=24, label="编程随想注：\n大字体"]
+    text3 [shape=box, fontcolor="blue", label="编程随想注：\n蓝色文字"]
+    text4 [shape=box, label=<编程随想注：<br/><b>粗体</b> <i>斜体</i> <u>下划线</u>>]
+    // 注意：text4 使用 HTML 风格的 label，无需引号，但必须用尖括号
+    text1 -> text2 -> text3 -> text4
+}
