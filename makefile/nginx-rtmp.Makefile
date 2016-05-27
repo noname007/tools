@@ -6,7 +6,7 @@ nginx:
 	test  -f '$(PWD)/nginx-1.8.1.tar.gz' || wget http://nginx.org/download/nginx-1.8.1.tar.gz 
 	test  -f '$(PWD)/nginx-1.8.1.tar.gz' && (test -d '$(PWD)/nginx-1.8.1'   || tar -zxvf nginx-1.8.1.tar.gz)
 rtmp-mod:
-	test -f '$(PWD)/master.zip' || wget https://github.com/arut/nginx-rtmp-module/archive/master.zip 
+	test -f '$(PWD)/master.zip' || wget https://github.com/noname007/nginx-rtmp-module/archive/master.zip
 	test -f '$(PWD)/master.zip' && (test -d '$(PWD)/nginx-rtmp-module-master' || unzip master.zip )
 	
 dep:
